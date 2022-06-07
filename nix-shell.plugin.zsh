@@ -9,6 +9,14 @@ if [ "$?" -ne "0" ]; then
   echo
 fi
 
+if [ "$(uname -s)" = "Darwin" ] && [ $(bash --version | grep -q "3.2") ]; then
+  echo
+  echo "  WARNING: An outdated version of bash is installed."
+  echo "  Older versions of bash, specifically 3.x and earlier"
+  echo "  break."
+  echo
+fi
+
 
 # extracts packages argument from args and passes them in $NIX_SHELL_PACKAGES variable.
 function nix-shell() {
